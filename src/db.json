@@ -1,0 +1,30 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Anbu"
+    },
+    {
+      "firstname": "Anbalagan",
+      "lastname": "Amirthalingam",
+      "email": "anbalagan28@yahoo.com",
+      "password": "123444",
+      "codeLang": "Node",
+      "id": 2
+    },
+    {
+      "firstname": "Kumar",
+      "lastname": "Maran",
+      "email": "232f@yahoo.com",
+      "password": "123444",
+      "codeLang": "react",
+      "id": 3
+    }
+  ],
+  "hotel": [
+    {
+      "id": 1,
+      "name": "Taj"
+    }
+  ]
+}

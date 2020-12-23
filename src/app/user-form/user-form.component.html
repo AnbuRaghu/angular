@@ -1,0 +1,68 @@
+<br>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Employee form
+        </div>
+        <div class="panel-body">
+            <form #form='ngForm' (submit)='submitForm(form)'>
+
+                <div class="form-group" [class.has-error]='firstname.invalid'>
+                    <!--to make the input box red when there is error.. class.has-error is a boostrap class-->
+                    <label class="control-label">
+                        First name
+                    </label>
+                    <input type="text" class="form-control" name="firstname" [ngModel]='myUser.firstname'
+                        (ngModelChange)='firstToUpper($event)' required #firstname='ngModel' />
+                </div>
+                <div class="alert alert-danger" *ngIf='firstname.invalid'>First name is required</div>
+                <div class="form-group" [class.has-error]='lastname.invalid'>
+                    <!--to make the input box red when there is error-->
+                    <label class="control-label">
+                        Last name
+                    </label>
+                    <input type="text" class="form-control" name="lastname" [ngModel]='myUser.lastname'
+                        (ngModelChange)='firstToUpperLname($event)' required #lastname='ngModel' />
+                </div>
+                <div class="alert alert-danger" *ngIf='lastname.invalid'>Last name is required</div>
+                <div class="form-group" [class.has-error]='email.invalid && email.touched'>
+                    <!--to make the input box red when there is error-->
+                    <label class="control-label">
+                        Email
+                    </label>
+                    <input type="email" class="form-control" name="email" [(ngModel)]='myUser.email'
+                        pattern="^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$" #email='ngModel' />
+                </div>
+                <div class="alert alert-danger" *ngIf='email.invalid  && email.touched'>please enter valid email</div>
+
+                <div class="form-group" [class.has-error]='pwd.invalid && pwd.touched'>
+                    <!--to make the input box red when there is error-->
+                    <label class="control-label">
+                        Password
+                    </label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]='myUser.password'
+                        minlength="5" #pwd='ngModel' />
+                </div>
+                <div class="alert alert-danger" *ngIf='pwd.invalid && pwd.touched '>minimum length is 5</div>
+
+
+                <div class="form-group" [class.has-error]='hasCodeLangError'>
+                    <!--to make the input box red when there is error-->
+                    <label class="control-label">
+                        code Lang
+                    </label>
+                    <select class="form-control" name="codeLang" [(ngModel)]='myUser.codeLang'
+                        (change)='validateCodeLang($event)'>
+                        <!--this is my own onchange method-->
+
+                        <option value='default'>Please select a language</option>
+                        <option *ngFor='let lang of languages'>{{lang}}</option>
+                    </select>
+                </div>
+                <div class="alert alert-danger" *ngIf='hasCodeLangError '>Please select an option</div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
